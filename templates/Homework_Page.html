@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block pageheading %}welcome{% endblock %}
+
+{% block main %}
+    {%  for stud in student %}
+        <table>
+            <tr><strong>Student_ID: </strong>{{ stud[0] }}</tr>
+            <tr><strong>First_name: </strong>{{ stud[1] }}</tr>
+            <tr><strong>Last_name: </strong>{{ stud[2] }}</tr>
+            <tr><strong>Email: </strong>{{ stud[3] }}</tr>
+            <tr><strong>Phone_number: </strong>{{ stud[4] }}</tr>
+        </table>
+    {% endfor %}
+    {% for wo in work %}
+        <table>
+        <tr><strong>Student_ID: </strong>{{ wo[0] }}</tr>
+        <tr><strong>Subject: </strong>{{ wo[1] }}</tr>
+        <tr><strong>Title: </strong>{{ wo[2] }}</tr>
+        <tr><strong>Date: </strong>{{ wo[3] }}</tr>
+        </table>
+    {% endfor %}
+{% endblock %}
