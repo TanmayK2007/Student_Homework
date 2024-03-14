@@ -23,16 +23,14 @@ def create_connection(db_file):
 @app.route('/')
 def homework_list():
     con = create_connection(DATABASE)
-    query = "SELECT Student_ID, First_Name, Last_Name, Email, Phone_Number FROM student"
+    query = "SELECT First_Name, Last_Name, due_date, Email, Subject, Title FROM Homework h INNER JOIN Student s " \
+            "ON h.student_id_fk = s.Student_ID INNER JOIN Work w ON h.work_id_fk = w.Student_ID"
     cur = con.cursor()
     cur.execute(query)
     student_list = cur.fetchall()
-    query = "SELECT Student_ID, Subject, Title, Date FROM work"
-    cur = con.cursor()
-    cur.execute(query)
-    work_list = cur.fetchall()
     con.close()
-    return render_template('Homework_Page.html', student=student_list, work=work_list)
+    print(student_list)
+    return render_template('Homework_Page.html', student=student_list)
 
 
 app.run(host='0.0.0.0', debug=True)
